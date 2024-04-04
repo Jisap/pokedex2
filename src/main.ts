@@ -7,6 +7,14 @@ async function bootstrap() {
 
   app.setGlobalPrefix('api/v2');      // Ruta ppal de la API
 
+  app.enableCors({
+    origin: true,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    allowedHeaders: "Content-Type,Authorization,X-Requested-With,Accept-Language",
+    optionsSuccessStatus: 204,
+    credentials: true,
+  });
+
   app.useGlobalPipes(                 // Validaciones globales
     new ValidationPipe({
       whitelist: true,                // Solo muestra la data que estoy esperando en el dto
